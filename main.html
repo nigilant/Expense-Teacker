@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Expense Tracker</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="logo" tabindex="0">ExpenseTracker</div>
+        </nav>
+
+        <header>
+            <h1>Track Your Expenses Effortlessly</h1>
+        </header>
+
+        <main class="container" role="main">
+            <div class="flex-wrapper">
+            <section class="form-card" aria-labelledby="add-expense-heading" tabindex="0">
+                <h2 id="add-expense-heading" style="margin-top:0; margin-bottom: 1.5rem; font-size:2rem; color: var(--color-primary);">Add an Expense</h2>
+                <form id="expense-form" novalidate>
+                <div>
+                    <label for="desc-input">Description</label>
+                    <input
+                    type="text"
+                    id="desc-input"
+                    name="description"
+                    placeholder="E.g., Grocery shopping"
+                    required
+                    aria-required="true"
+                    autocomplete="off"
+                    />
+                </div>
+                <div>
+                    <label for="category-select">Category</label>
+                    <select id="category-select" name="category" required aria-required="true" >
+                    <option value="" disabled selected>Select category</option>
+                    <option value="Food">Food</option>
+                    <option value="Transport">Transport</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Bills">Bills</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Others">Others</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="amount-input">Amount ($)</label>
+                    <input
+                    type="number"
+                    id="amount-input"
+                    name="amount"
+                    placeholder="0.00"
+                    min="0.01"
+                    step="0.01"
+                    required
+                    aria-required="true"
+                    autocomplete="off"
+                    inputmode="decimal"
+                    />
+                </div>
+                <button type="submit" aria-label="Add Expense" title="Add Expense">Add</button>
+                </form>
+            </section>
+
+            <section class="expenses-card" aria-labelledby="expenses-heading" tabindex="0">
+                <h2 id="expenses-heading" class="expenses-header">Expenses</h2>
+                <table id="expenses-table" aria-describedby="expenses-info">
+                <thead>
+                    <tr>
+                    <th scope="col">Description</th>
+                    <th scope="col">Category</th>
+                    <th scope="col" style="text-align:right">Amount ($)</th>
+                    <th scope="col" style="width: 2.5rem;">Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Expenses will be inserted here -->
+                </tbody>
+                </table>
+                <p id="expenses-info" class="sr-only">List of added expenses with description, category, and amount. Remove an expense with the delete button.</p>
+            </section>
+            </div>
+
+            <section class="total-section" aria-live="polite" aria-atomic="true" aria-relevant="text" tabindex="0">
+            Total Expenses: $<span id="total-amount">0.00</span>
+            </section>
+        </main>
+
+        <script src="script.js"></script>
+    </body>
+</html>
